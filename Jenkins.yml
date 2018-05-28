@@ -2,7 +2,7 @@ openshift:
   templatePath: kube/nodejs_template.yaml
 
 
-imageStreamNodejsVersion: 8
+imageStreamNodejsVersion: 6
 devMode: false
 debugPort: 5858
 useNpmMirror: false
