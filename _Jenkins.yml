@@ -1,0 +1,72 @@
+openshift:
+  templatePath: kube/nodejs_template.yaml
+
+
+imageStreamNodejsVersion: 8
+devMode: false
+debugPort: 5858
+useNpmMirror: false
+npmMirror: https://registry.npmjs.org/
+useAlternateNpmRun: false
+alternateNpmRunScript: script_prueba
+
+ports:
+  useSpecificPort: true
+  portNumber: 3000
+  createPortEnvironmentVariable: true
+
+npmRegistryDeploy:
+  - release
+
+confirmDeploy:
+  - master
+
+timeoutConfirmDeploy: true
+timeoutConfirmDeployTime: 30
+timeoutConfirmDeployUnit: MINUTES
+
+testing:
+  predeploy:
+    unitTesting:
+     # - feature
+      - develop
+     # - release
+      - hotfix
+      - master
+    sonarQube:
+      # - feature
+      # - develop
+      # - release
+      # - hotfix
+    checkstyle:
+      # - feature
+      # - develop
+      # - release
+
+  postdeploy:
+    smokeTesting:
+      - release
+      - master
+    securityTesting:
+      - develop
+      - release
+    performanceTesting:
+      - release
+      - hotfix
+    acceptanceTesting:
+      - develop
+      - release
+
+notifications:
+  branch:
+    - feature
+    - develop
+    - release
+    - master
+    - hotfix
+type: slack
+
+jenkins:
+  maxOldBuildsToKeep: 10
+  daysOldBuildsToKeep: 0
+  errorOnPostDeployTestsUnstableResult: true
