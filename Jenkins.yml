@@ -30,7 +30,7 @@ testing:
     unitTesting:
      # - feature
       - develop
-     # - release
+      - release
       - hotfix
       - master
     sonarQube:
