@@ -41,8 +41,8 @@ testing:
 
     sonarQubeParameters:
       sonarSources: server
-      sonarTests:
-      sonarTestExecutionReportPath: test-report.xml
+      sonarTests: __tests__
+      sonarTestExecutionReportPath:
       sonarCoverageReportPath: coverage/lcov.info
       sonarExclusions: node_modules/**
 
