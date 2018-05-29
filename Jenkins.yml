@@ -39,7 +39,7 @@ testing:
       - release
       - hotfix
 
-    sonarQubeParameters:
+    sonarQubeAnalisisParameters:
       sonarSources: server
       sonarTests: __tests__
       sonarTestExecutionReportPath: test-report.xml
