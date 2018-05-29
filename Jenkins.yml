@@ -40,8 +40,8 @@ testing:
       - hotfix
 
     sonarQubeParameters:
-      xonarSources: server
-      sonarTests: __tests__
+      sonarSources: server
+      sonarTests:
       sonarTestExecutionReportPath: test-report.xml
       sonarCoverageReportPath: coverage/lcov.info
       sonarExclusions: node_modules/**
