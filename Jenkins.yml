@@ -44,7 +44,7 @@ testing:
       sonarTests: __tests__
       sonarTestExecutionReportPath: test-report.xml
       sonarCoverageReportPath: coverage/lcov.info
-      sonarExclusions:
+      sonarExclusions: node_modules/**
 
   postdeploy:
     smokeTesting:
