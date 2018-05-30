@@ -3,7 +3,7 @@ openshift:
 
 
 imageStreamNodejsVersion: 8
-devMode: true
+devMode: false
 debugPort: 5858
 useNpmMirror: false
 npmMirror: https://registry.npmjs.org/
@@ -11,7 +11,7 @@ useAlternateNpmRun: false
 alternateNpmRunScript: script_prueba
 
 ports:
-  useSpecificPort: false
+  useSpecificPort: true
   portNumber: 3000
   createPortEnvironmentVariable: true
 
