@@ -16,10 +16,8 @@ ports:
   createPortEnvironmentVariable: true
 
 
-xenvironmentVariables:
-  ENVIR_11: XXX
-  ENVIR_22: 2
-  ENVIR_33: true
+environmentVariables:
+
 
 npmRegistryDeploy:
   # - release
