@@ -16,7 +16,7 @@ ports:
   createPortEnvironmentVariable: true
 
 
-environmentVariables:
+xenvironmentVariables:
   ENVIR_11: XXX
   ENVIR_22: 2
   ENVIR_33: true
