@@ -11,8 +11,8 @@ useAlternateNpmRun: true
 alternateNpmRunScript: script_prueba
 
 ports:
-  useSpecificPort: false
-  portNumber: 3000
+  useSpecificPort: true
+  portNumber: 8080
   createPortEnvironmentVariable: true
 
 
