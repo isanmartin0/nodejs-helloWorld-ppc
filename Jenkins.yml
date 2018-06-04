@@ -23,7 +23,7 @@ npmRegistryDeploy:
   # - release
 
 confirmDeploy:
-  #  - master
+  - release
 
 timeoutConfirmDeploy: true
 timeoutConfirmDeployTime: 30
