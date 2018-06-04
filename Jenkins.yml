@@ -20,7 +20,7 @@ environmentVariables:
   # environmentVariable1: value1
 
 npmRegistryDeploy:
-  # - release
+  - master
 
 confirmDeploy:
   - master
