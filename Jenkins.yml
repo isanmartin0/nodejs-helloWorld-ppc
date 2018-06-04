@@ -20,10 +20,10 @@ environmentVariables:
   # environmentVariable1: value1
 
 npmRegistryDeploy:
-  # - release
+  - release
 
 confirmDeploy:
-  - release
+  - master
 
 timeoutConfirmDeploy: true
 timeoutConfirmDeployTime: 30
