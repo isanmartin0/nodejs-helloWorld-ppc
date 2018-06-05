@@ -5,8 +5,8 @@ openshift:
 imageStreamNodejsVersion: 8
 devMode: false
 debugPort: 5858
-useNpmMirror: true
-npmMirror: http://10.6.14.20:8081/artifactory/api/npm/npm-repo/
+useNpmMirror: false
+npmMirror: https://registry.npmjs.org/
 useAlternateNpmRun: false
 alternateNpmRunScript: script_prueba
 
