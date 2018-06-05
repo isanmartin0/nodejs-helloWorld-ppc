@@ -19,7 +19,7 @@ ports:
 environmentVariables:
   # environmentVariable1: value1
 
-npmRegistryDeploy:
+npmRegistryPublish:
   - release
 
 confirmDeploy:
