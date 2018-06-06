@@ -52,11 +52,11 @@ testing:
 
   postdeploy:
     smokeTesting:
-      # - release
+      - release
       # - master
     securityTesting:
       # - develop
-      - release
+      # - release
     performanceTesting:
       # - release
       # - hotfix
