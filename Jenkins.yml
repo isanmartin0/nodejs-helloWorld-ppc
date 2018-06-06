@@ -58,11 +58,11 @@ testing:
       # - develop
       # - release
     performanceTesting:
-      - release
+      # - release
       # - hotfix
     acceptanceTesting:
       # - develop
-      # - release
+      - release
 
 
 notifications:
