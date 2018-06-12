@@ -97,6 +97,116 @@ def runNodejsPPCJenkinsfile() {
             echo "Source code hosted in: ${projectURL}"
         }
 
+        //sleep 10
+        checkout scm
+
+        stage('Check Parallel project configuration elements (PPC)') {
+
+            ackageJSON = readJSON file: 'package.json'
+
+            isScopedPackage = utils.isScopedPackage(packageJSON.name)
+            echo "isScopedPackage: ${isScopedPackage}"
+
+            if (isScopedPackage) {
+                packageScope = utils.getPackageScope(packageJSON.name)
+                echo "packageScope: ${packageScope}"
+            }
+
+            packageName = utils.getProject(packageJSON.name)
+            echo "packageName: ${packageName}"
+            packageVersion = packageJSON.version
+            echo "packageVersion: ${packageVersion}"
+            packageTag = utils.getPackageTag(packageJSON.name, packageVersion)
+            echo "packageTag: ${packageTag}"
+            packageTarball = utils.getPackageTarball(packageJSON.name, packageVersion)
+            echo "packageTarball: ${packageTarball}"
+            packageViewTarball = utils.getPackageViewTarball(packageJSON.name, packageVersion)
+            echo "packageViewTarball: ${packageViewTarball}"
+
+
+
+            try {
+                def parallelConfigurationProject = utils.getParallelConfigurationProjectURL(projectURL)
+
+                echo "Node.js parallel configuration project ${parallelConfigurationProject} searching"
+
+                retry (3)
+                        {
+                            checkout([$class                           : 'GitSCM',
+                                      branches                         : [[name: branchPPC]],
+                                      doGenerateSubmoduleConfigurations: false,
+                                      extensions                       : [[$class           : 'RelativeTargetDirectory',
+                                                                           relativeTargetDir: relativeTargetDirPPC]],
+                                      submoduleCfg                     : [],
+                                      userRemoteConfigs                : [[credentialsId: credentialsIdPPC,
+                                                                           url          : parallelConfigurationProject]]])
+                        }
+
+                echo "Node.js Parallel configuration project ${parallelConfigurationProject} exits"
+
+                // Jenkinsfile
+                isPPCJenkinsFile = fileExists jenkinsFilePathPPC
+
+                if (isPPCJenkinsFile) {
+                    echo "Node.js Parallel configuration project Jenkinsfile... FOUND"
+                } else {
+                    echo "Node.js Parallel configuration project Jenkinsfile... NOT FOUND"
+                }
+
+
+                // Jenkins.yml
+                isPPCJenkinsYaml = fileExists jenkinsYamlPathPPC
+
+                if (isPPCJenkinsYaml) {
+                    echo "Node.js Parallel configuration project Jenkins.yml... FOUND"
+                } else {
+                    echo "Node.js Parallel configuration project Jenkins.yml... NOT FOUND"
+                }
+
+                // Openshift template (template.yaml)
+                isPPCOpenshiftTemplate = fileExists openshiftNodejsTemplatePathPPC
+
+                if (isPPCOpenshiftTemplate) {
+                    echo "Node.js Parallel configuration project Openshift template... FOUND"
+                } else {
+                    echo "Node.js Parallel configuration project Openshift template... NOT FOUND"
+                }
+
+
+                echo "isPPCJenkinsFile : ${isPPCJenkinsFile}"
+                echo "isPPCJenkinsYaml : ${isPPCJenkinsYaml}"
+                echo "isPPCOpenshiftTemplate : ${isPPCOpenshiftTemplate}"
+
+            }
+            catch (exc) {
+                echo 'There is an error on retrieving Node.js parallel project configuration'
+                def exc_message = exc.message
+                echo "${exc_message}"
+            }
+        }
+
+       stage('Load pipeline configuration') {
+
+
+            if (!isPPCJenkinsFile || !isPPCJenkinsYaml || !isPPCOpenshiftTemplate) {
+                currentBuild.result = Constants.FAILURE_BUILD_RESULT
+                throw new hudson.AbortException('The parallel project configuration has not mandatory elements')
+            }
+
+            //Take parameters of the parallel project configuration (PPC)
+            params = readYaml  file: jenkinsYamlPathPPC
+            echo "Using Jenkins.yml from parallel project configuration (PPC)"
+
+            //The template is provided by parallel project configuration (PPC)
+            params.openshift.templatePath = relativeTargetDirPPC + params.openshift.templatePath
+            echo "Template provided by parallel project configuration (PPC)"
+
+            assert params.openshift.templatePath?.trim()
+
+            echo "params.openshift.templatePath: ${params.openshift.templatePath}"
+
+         }
+
         stage('NodeJS initialization') {
             echo 'Node initializing...'
 
