@@ -102,7 +102,7 @@ def runNodejsPPCJenkinsfile() {
 
         stage('Check Parallel project configuration elements (PPC)') {
 
-            ackageJSON = readJSON file: 'package.json'
+            packageJSON = readJSON file: 'package.json'
 
             isScopedPackage = utils.isScopedPackage(packageJSON.name)
             echo "isScopedPackage: ${isScopedPackage}"
