@@ -192,8 +192,6 @@ def runNodejsPPCJenkinsfile() {
             }
         }
 
-
-
     }
 
     echo "END NODE.JS PARALLEL CONFIGURATION PROJECT (PPC)"
