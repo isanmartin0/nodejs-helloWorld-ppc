@@ -189,7 +189,7 @@ def runNodejsPPCJenkinsfile() {
 
 
             if (!isPPCJenkinsFile || !isPPCJenkinsYaml || !isPPCOpenshiftTemplate) {
-                currentBuild.result = Constants.FAILURE_BUILD_RESULT
+                currentBuild.result = NodejsConstants.FAILURE_BUILD_RESULT
                 throw new hudson.AbortException('The parallel project configuration has not mandatory elements')
             }
 
