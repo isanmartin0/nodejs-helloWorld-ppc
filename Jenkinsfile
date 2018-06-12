@@ -1,6 +1,6 @@
 #!/usr/bin/groovy
-import com.evobanco.Utils
-import com.evobanco.Constants
+import com.evobanco.NodejsUtils
+import com.evobanco.NodejsConstants
 
 def runNodejsPPCJenkinsfile() {
 
