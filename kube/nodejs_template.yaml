@@ -65,7 +65,7 @@ objects:
           value: ${ENVIRONMENT_VARIABLE_PRUEBA}
         from:
           kind: ImageStreamTag
-          name: nodejs:${NODEJS_VERSION}
+          name: rhoar-nodejs-10:10.2.1
           namespace: openshift
     output:
       to:
