@@ -1,5 +1,5 @@
 openshift:
-  templatePath: kube/nodejs_template_rhoar.yaml
+  templatePath: kube/nodejs_template_rhoar_10_2_1.yaml
 
 
 imageStreamNodejsVersion: 8
