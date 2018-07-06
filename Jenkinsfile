@@ -7,8 +7,8 @@ def runNodejsPPCJenkinsfile() {
 
     def utils = new NodejsUtils()
 
-    def npmRepositoryURL = 'http://10.6.14.20:8081/artifactory/api/npm/npm-repo/'
-    def npmLocalRepositoryURL = 'http://10.6.14.20:8081/artifactory/api/npm/npm-local/'
+    def npmRepositoryURL = 'http://10.6.14.20:8080/artifactory/api/npm/npm-repo/'
+    def npmLocalRepositoryURL = 'http://10.6.14.20:8080/artifactory/api/npm/npm-local/'
 
     def openshiftURL = 'https://openshift.grupoevo.corp:8443'
     def openshiftCredential = 'openshift'
