@@ -292,6 +292,10 @@ def runNodejsPPCJenkinsfile() {
                     if (branchName != 'master') {
 
                         stage('Build') {
+
+                            echo 'Get NPM config registry'
+                            sh 'npm config get registry'
+
                             echo 'Building dependencies...'
                             sh 'npm i'
                         }
