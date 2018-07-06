@@ -10,8 +10,8 @@ def runNodejsPPCJenkinsfile() {
     //def npmRepositoryURL = 'http://10.6.14.20:8080/artifactory/api/npm/npm-repo/'
     //def npmLocalRepositoryURL = 'http://10.6.14.20:8080/artifactory/api/npm/npm-local/'
 
-    def npmRepositoryURL = 'https://digitalservices.evobanco.com/artifactory/api/npm/npm-repo/'
-    def npmLocalRepositoryURL = 'https://digitalservices.evobanco.com/artifactory/api/npm/npm-local/'
+    def npmRepositoryURL = 'https://digitalservices.evobanco.com:8081/artifactory/api/npm/npm-repo/'
+    def npmLocalRepositoryURL = 'https://digitalservices.evobanco.com:8081/artifactory/api/npm/npm-local/'
 
     def openshiftURL = 'https://openshift.grupoevo.corp:8443'
     def openshiftCredential = 'openshift'
