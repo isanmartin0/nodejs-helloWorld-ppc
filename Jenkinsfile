@@ -306,6 +306,9 @@ def runNodejsPPCJenkinsfile() {
 
 
                             try {
+
+                                echo "NPM_AUTH: ${ARTIFACTORY_NPM_AUTH}"
+                                echo "NPM_AUTH_EMAIL: ${ARTIFACTORY_NPM_EMAIL_AUTH}"
                                 echo 'Building dependencies...'
                                 sh 'npm i'
                             } catch (exc) {
