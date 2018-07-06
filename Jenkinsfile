@@ -301,8 +301,21 @@ def runNodejsPPCJenkinsfile() {
                             echo 'Get NPM config registry'
                             sh 'npm config get registry'
 
-                            echo 'Building dependencies...'
-                            sh 'npm i'
+
+                            try {
+                                echo 'Building dependencies...'
+                                sh 'npm i'
+                            } catch (exc) {
+                                    def deploy = input message: 'Waiting for user approval',
+                                    parameters: [choice(name: 'Continue and deploy?', choices: 'No\nYes', description: 'Choose "Yes" if you want to deploy this build')]
+
+
+                                    currentBuild.result = "FAILED"
+                                    throw new hudson.AbortException("Error installing dependencies")
+                            }
+
+
+
                         }
 
 
