@@ -241,6 +241,11 @@ def runNodejsPPCJenkinsfile() {
             sh "npm -v"
         }
 
+        stage('Configure Artifactory NPM Registry') {
+            echo 'Setting Artifactory NPM registry'
+            sh "npm config set registry ${npmRepositoryURL} "
+        }
+
 
         stage('Prepare') {
             echo "Prepare stage (PGC)"
