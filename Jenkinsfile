@@ -301,8 +301,8 @@ def runNodejsPPCJenkinsfile() {
 
                         stage('Build') {
 
-                            echo 'Get NPM config registry'
-                            sh 'npm config get registry'
+                            //echo 'Get NPM config registry'
+                            //sh 'npm config get registry'
 
 
                             try {
