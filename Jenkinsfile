@@ -295,7 +295,7 @@ def runNodejsPPCJenkinsfile() {
 
         withCredentials([string(credentialsId: "${artifactoryNPMAuthCredential}", variable: 'ARTIFACTORY_NPM_AUTH'), string(credentialsId: "${artifactoryNPMEmailAuthCredential}", variable: 'ARTIFACTORY_NPM_EMAIL_AUTH')]) {
             withEnv(["NPM_AUTH=${ARTIFACTORY_NPM_AUTH}", "NPM_AUTH_EMAIL=${ARTIFACTORY_NPM_EMAIL_AUTH}"]) {
-        //        withNPM(npmrcConfig: 'my-custom-npmrc') {
+                withNPM(npmrcConfig: 'my-custom-npmrc') {
 
                     if (branchName != 'master') {
 
@@ -326,7 +326,7 @@ def runNodejsPPCJenkinsfile() {
 
 
                     }
-        //        }
+                }
             }
         }
 
