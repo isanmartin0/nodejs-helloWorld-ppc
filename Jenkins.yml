@@ -34,15 +34,15 @@ testing:
   predeploy:
     unitTesting:
      # - feature
-      - develop
-      - release
-      - hotfix
+     # - develop
+     # - release
+     # - hotfix
       - master
     sonarQube:
-      - feature
-      - develop
-      - release
-      - hotfix
+     # - feature
+     # - develop
+     # - release
+     # - hotfix
 
     sonarQubeAnalisis:
       sonarSources: server
